@@ -1,0 +1,52 @@
+/*1.创建数据库*/
+create database mis;
+use mis;
+
+drop table c_details;
+drop table users;
+
+/*2.简易个人记账系统*/
+create table c_details (
+  id int not null auto_increment,
+  cdate date not null,
+  money float(8,2)  not null,
+  note varchar(50),
+  uname varchar(20),
+  primary key (id)
+);
+
+insert into c_details (cdate,money,note,uname) values 
+ ('2018-1-10',10,'水果','sd'),
+ ('2018-1-20',12,'包子','sd'),
+ ('2018-2-1',50.6,'汉堡','sd'),
+ ('2018-3-10',20,'洗衣液','sd'),
+ ('2018-4-10',9,'文具','sd'),
+ ('2018-5-5',16,'电影票','sd'),
+ ('2018-8-10',17.9,'咖啡','sd'),
+ ('2018-9-10',12.3,'水果','sd'),
+ ('2018-10-10',30,'食品','sd'),
+ ('2019-1-10',10,'水果','sd'),
+ ('2019-1-20',12,'包子','sd'),
+ ('2019-2-1',50.6,'汉堡','sd'),
+ ('2019-3-10',20,'洗衣液','sd'),
+ ('2019-4-10',9.99,'文具','sd'),
+ ('2019-5-5',16,'电影票','sd'),
+ ('2019-8-10',17.9,'咖啡','sd'),
+ ('2019-9-10',12.3,'水果','sd'),
+ ('2020-01-10',35,'食品','sd'),
+ ('2020-02-10',67,'食品','sd'),
+ ('2020-03-01',90,'食品','sd');
+
+create table users (
+      uname varchar(20) not null,
+      pwd  varchar(8),
+      name varchar(20),
+      cardid varchar(20),
+      phone varchar(20),
+      primary key (uname)
+  );
+
+insert into users (uname,pwd,name,cardid,phone) values ('sd','123456','升达','400108199009081535','12746782839');
+
+
+

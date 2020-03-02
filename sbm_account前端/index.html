@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Vue 实例</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"> </script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+    <!--引入日期转换格式函数-->
+    <script src="dateformat/dateformat.js"></script>
+    <!--引入组件-->
+    <script src="components/pc_head.js"></script>
+    <script src="components/pc_foot.js"></script>
+    <script src="components/pc_side.js"></script>
+    <script src="components/pc_details.js"></script>
+    <script src="components/pc_daylist.js"></script>
+    <script src="components/pc_monthlist.js"></script>
+    <script src="components/pc_yearlist.js"></script>
+    <script src="components/pc_add.js"></script>
+
+    <!--引入store共享状态-->
+    <script src="store/store.js"></script>
+    <!--最后，引入路由-->
+    <script src="router/router.js"></script>
+
+    <script>
+        // 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        // 从而让整个应用都有路由功能
+        const app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+
+</body>
+
+</html>

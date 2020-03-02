@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.xm.mapper.AccountMapper">
+
+    <select id="selectAccountByDate" parameterType="map"  resultType="Account">
+        select * from c_details where cdate between #{date1} and  #{date2} order by id
+    </select>
+
+
+    <select id="selectAccountByDay"  parameterType="map"  resultType="map">
+        select cdate,sum(money) as je from c_details
+        where cdate between #{date1} and #{date2}
+        group by cdate
+        order by cdate
+    </select>
+
+
+    <select id="selectAccountByMonth"   resultType="map">
+        select year(cdate) as year,month(cdate) as month,sum(money) as je from c_details
+        group by year(cdate),month(cdate)
+        order by year(cdate) ,month(cdate)
+    </select>
+    
+    <select id="selectAccountByYear"  resultType="map">
+       select year(cdate) as year,sum(money) as je from c_details group by year(cdate) order by year(cdate)
+    </select>
+
+    <!-- insert操，parameterType="Account"表示该插入语句需要一个Account对象作为参数
+    useGeneratedKeys="true"表示使用自动增长的主键 -->
+    <insert id="saveAccount" parameterType="Account"   useGeneratedKeys="true">
+        insert into c_details (cdate,money,note)
+        values(#{cdate},#{money},#{note})
+    </insert>
+
+    <!-- update操作  parameterType="Account" 需要一个Account对象作为参数-->
+    <update id="modifyAccount" parameterType="Account">
+        update c_details 
+        set cdate = #{cdate},money = #{money},note = #{note}
+        WHERE id = #{id}
+    </update>
+
+    <!-- delete操作 parameterType="int"表示该查询语句需要一个int类型的参数-->
+    <delete id="removeAccount" parameterType="Integer">
+        delete from c_details  where id = #{id}
+    </delete>
+
+</mapper>
